@@ -1,5 +1,9 @@
 <html>
   <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="/styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -27,7 +31,12 @@
                 return (
                   <li key={word.id}>
                     {word.name}
-                    <button onClick={() => destroyWord(type, word)}>x</button>
+                    <button
+                      className="deleteButton"
+                      onClick={() => destroyWord(type, word)}
+                    >
+                      x
+                    </button>
                   </li>
                 );
               })}
@@ -41,9 +50,9 @@
         const [adjectives, setAdjectives] = useState([]);
         useEffect(() => {
           Promise.all([
-            axios.get("/api/nouns"),
-            axios.get("/api/verbs"),
-            axios.get("/api/adjectives")
+            axios.get('/api/nouns'),
+            axios.get('/api/verbs'),
+            axios.get('/api/adjectives')
           ])
             .then(responses => responses.map(response => response.data))
             .then(results => {
@@ -57,13 +66,13 @@
             .delete(`/api/${type}/${word.id}`)
             .then(response => response.data)
             .then(() => {
-              if (type === "nouns") {
+              if (type === 'nouns') {
                 setNouns(nouns.filter(n => n.id !== word.id));
               }
-              if (type === "verbs") {
+              if (type === 'verbs') {
                 setVerbs(verbs.filter(n => n.id !== word.id));
               }
-              if (type === "adjectives") {
+              if (type === 'adjectives') {
                 setAdjectives(adjectives.filter(n => n.id !== word.id));
               }
             });
@@ -73,13 +82,13 @@
             .post(`/api/${type}`)
             .then(response => response.data)
             .then(word => {
-              if (type === "nouns") {
+              if (type === 'nouns') {
                 setNouns([...nouns, word]);
               }
-              if (type === "verbs") {
+              if (type === 'verbs') {
                 setVerbs([...verbs, word]);
               }
-              if (type === "adjectives") {
+              if (type === 'adjectives') {
                 setAdjectives([...adjectives, word]);
               }
             });
@@ -88,13 +97,22 @@
           <div>
             <h1>Acme Dictionary</h1>
             <nav>
-              <button onClick={() => generateWord("nouns")}>
+              <button
+                className="gen-button"
+                onClick={() => generateWord('nouns')}
+              >
                 Generate Noun ({nouns.length})
               </button>
-              <button onClick={() => generateWord("verbs")}>
+              <button
+                className="gen-button"
+                onClick={() => generateWord('verbs')}
+              >
                 Generate Verb ({verbs.length})
               </button>
-              <button onClick={() => generateWord("adjectives")}>
+              <button
+                className="gen-button"
+                onClick={() => generateWord('adjectives')}
+              >
                 Generate Adjective ({adjectives.length})
               </button>
             </nav>
@@ -110,7 +128,7 @@
           </div>
         );
       };
-      const root = document.querySelector("#root");
+      const root = document.querySelector('#root');
       ReactDOM.render(<App />, root);
     </script>
   </body>

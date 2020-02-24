@@ -1,5 +1,4 @@
 const pg = require('pg');
-const uuid = require('uuid');
 const { Client } = pg;
 
 const client = new Client('postgres://localhost/dictionary_db');
@@ -49,7 +48,6 @@ const readNouns = async () => {
 const createNoun = async noun => {
   const SQL = 'INSERT INTO nouns (name) VALUES ($1) returning *';
   const response = await client.query(SQL, [noun]);
-  console.log(response.rows);
   return response.rows[0];
 };
 

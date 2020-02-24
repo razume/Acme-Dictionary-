@@ -1,5 +1,5 @@
 body {
-  font-family: verdana;
+  font-family: 'Lato';
   margin: 0;
 }
 
@@ -18,8 +18,40 @@ nav {
   margin-bottom: 1rem;
 }
 
+.gen-button {
+  border-radius: 3px;
+  font-size: smaller;
+  background-color: rgba(37, 80, 223, 0.418);
+  color: rgb(17, 20, 167);
+
+  box-shadow: 0 4px 8px 0 rgba(79, 82, 112, 0.2),
+    0 6px 20px 0 rgba(79, 82, 112, 0.19);
+}
+
+.gen-button:hover {
+  box-shadow: 1px 1px 4px 1px rgba(14, 89, 228, 0.233);
+}
+
+.deleteButton {
+  border: 1px solid rgba(119, 117, 117, 0.205);
+  color: rgba(119, 117, 117, 0.527);
+  border-radius: 2px;
+  padding: 1px;
+  width: 1.5rem;
+  font-size: 8pt;
+}
+.deleteButton:hover {
+  background-color: rgba(211, 13, 30, 0.555);
+  border: 1px solid rgba(255, 0, 0, 0.445);
+  color: white;
+  border-radius: 2px;
+  padding: 1px;
+  width: 1.5rem;
+  font-size: 8pt;
+}
+
 button {
-  height: 2rem;
+  padding: 10px;
   font-size: 1.5rem;
 }
 
@@ -37,16 +69,24 @@ li > * {
 }
 
 h1 {
-  background-color: teal;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(51, 51, 51),
+    rgb(216, 216, 216)
+  );
   padding: 1rem;
-  color: linen;
+  color: rgb(255, 255, 255);
   text-align: center;
+  font-size: 50pt;
+  text-shadow: 2px 2px 5px rgba(146, 146, 146, 0.61);
+  box-shadow: 0 2px 7px 1px rgba(128, 128, 128, 0.685);
 }
 
 section {
   display: flex;
-  border: solid 2px teal;
-  border-radius: 3rem;
+  box-shadow: 0 4px 8px 0 rgba(79, 82, 112, 0.2),
+    0 6px 20px 0 rgba(79, 82, 112, 0.19);
+  border-radius: 5px;
   flex-direction: column;
   align-items: center;
 }

@@ -4,19 +4,21 @@ const db = require('./db');
 const morgan = require('morgan');
 const faker = require('faker');
 const path = require('path');
-// const pg = require("pg");
 
 app.use(express.json());
 
 app.use(
   morgan(':method :url :status :res[content-length] - :response-time ms')
 );
+
 app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// ********************GET********************
+
 app.get('/api/nouns', (req, res, next) => {
-  db.readNoun()
+  db.readNouns()
     .then(response => res.send(response))
     .catch(next);
 });
@@ -32,6 +34,8 @@ app.get('/api/adjectives', (req, res, next) => {
     .then(response => res.send(response))
     .catch(next);
 });
+
+// ********************POST********************
 
 app.post('/api/nouns', async (req, res, next) => {
   try {
@@ -59,6 +63,8 @@ app.post('/api/adjectives', async (req, res, next) => {
     next(ex);
   }
 });
+
+// ********************DELETE********************
 
 app.delete('/api/nouns/:id', async (req, res, next) => {
   try {
