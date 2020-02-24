@@ -72,7 +72,6 @@ const readAdjectives = async () => {
 const createAdjective = async noun => {
   const SQL = 'INSERT INTO adjectives (name) VALUES ($1) returning *';
   const response = await client.query(SQL, [noun]);
-  console.log(response.rows);
   return response.rows[0];
 };
 
